@@ -19,3 +19,7 @@ body{
     background: linear-gradient(90deg, rgba(149,0,0,1) 0%, rgba(207,0,119,1) 50%, rgba(255,168,168,1) 100%);
     color: #f8f9fa;
 }
+
+.txt-color{
+    color: #f8f9fa;
+}

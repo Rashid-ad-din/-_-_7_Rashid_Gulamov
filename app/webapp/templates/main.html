@@ -36,4 +36,10 @@
             </div>
         </div>
     {% endif %}
+
+    <h5 class="txt-color mt-5">Добавление новой записи</h5>
+    <form action="{% url 'add' %}" method="POST" class="ml-4">
+        {% include 'partial/partial_add_edit.html' with button_text1='Добавить' %}
+    </form>
+
 {% endblock %}

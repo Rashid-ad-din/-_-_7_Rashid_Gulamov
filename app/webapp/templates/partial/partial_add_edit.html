@@ -1,0 +1,20 @@
+{% csrf_token %}
+
+<p class="mb-0">
+    <label class="txt-color" for="" style="width: 75px;">Автор</label>
+    {{ note_form.author }}
+</p>
+<p class="mb-0">
+    <label class="txt-color" for="" style="width: 75px;">Почта</label>
+    {{ note_form.email }}
+</p>
+<p class="mb-0">
+    <label class="txt-color" for="" style="width: 75px;">Текст</label>
+    {{ note_form.text }}
+</p>
+
+
+<p class="pt-3">
+    <input type="submit" value="{{ button_text1 }}" class="btn btn-custom mb-3">
+</p>
+
