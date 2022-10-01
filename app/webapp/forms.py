@@ -36,6 +36,6 @@ class SearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form mt-3',
-            'style': 'max-width: 250px; margin-left: 495px;',
+            'style': 'max-width: 250px; margin-left: 475px;',
         })
     )
