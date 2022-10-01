@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3 class="txt-color pt-3 pb-3">Удаление записи</h3>
+
+    {% if note %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Автор</th>
+                <th scope="col">Почта</th>
+                <th scope="col">Текст</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-3 text-break">
+                    {{ note.author }}
+                </td>
+                <td class="col-3 text-break">
+                    {{ note.email }}
+                </td>
+                <td class="col-6 text-break">
+                    {{ note.text | linebreaks }}
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+        <h1 class="text-center" style="font-size: 21px;">Вы точно хотите удалить заметку? <br>"{{ note }}"?
+        </h1>
+        <form method="POST" action="{% url "confirm_delete" note.pk %}" class="text-center">
+            {% csrf_token %}
+            <input type="submit" value="Да" class="btn btn-danger mt-2 ml-3 mb-3">
+            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url "main" %}">Нет</a>
+        </form>
+
+    {% else %}
+        <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
+    {% endif %}
+{% endblock %}
+

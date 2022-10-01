@@ -45,7 +45,6 @@ def edit_view(request: WSGIRequest, pk):
         'email': note.email,
         'text': note.text,
     })
-    print('asd')
     if request.method == 'GET':
         return render(request, 'edit.html', context={'note': note, 'note_form': note_form})
     note_form = NoteForm(request.POST)
@@ -55,4 +54,15 @@ def edit_view(request: WSGIRequest, pk):
     note.email = note_form.cleaned_data['email']
     note.text = note_form.cleaned_data['text']
     note.save()
+    return redirect('main')
+
+
+def delete_view(request: WSGIRequest, pk):
+    note = get_object_or_404(Note, pk=pk)
+    return render(request, 'delete.html', context={'note': note})
+
+
+def confirm_delete_view(request: WSGIRequest, pk):
+    note = get_object_or_404(Note, pk=pk)
+    note.delete()
     return redirect('main')
