@@ -13,7 +13,7 @@ class NoteForm(forms.Form):
     )
     email = forms.CharField(
         label='Почта',
-        max_length=150,
+        max_length=254,
         required=True,
         widget=widgets.EmailInput(attrs={
             'class': 'form mt-3',
@@ -21,7 +21,7 @@ class NoteForm(forms.Form):
     )
     text = forms.CharField(
         label='Текст',
-        max_length=150,
+        max_length=2500,
         required=True,
         widget=widgets.Textarea(attrs={
             'class': 'form mt-3',
