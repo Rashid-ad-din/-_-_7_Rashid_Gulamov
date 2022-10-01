@@ -1,5 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.forms import SearchForm, NoteForm
 from webapp.models import Note, StatusChoices
@@ -36,3 +36,23 @@ def search_view(request: WSGIRequest):
         'note_form': note_form
     }
     return render(request, 'main.html', context)
+
+
+def edit_view(request: WSGIRequest, pk):
+    note = get_object_or_404(Note, pk=pk)
+    note_form = NoteForm(initial={
+        'author': note.author,
+        'email': note.email,
+        'text': note.text,
+    })
+    print('asd')
+    if request.method == 'GET':
+        return render(request, 'edit.html', context={'note': note, 'note_form': note_form})
+    note_form = NoteForm(request.POST)
+    if not note_form.is_valid():
+        return render(request, 'edit.html', context={'note': note, 'note_form': note_form})
+    note.author = note_form.cleaned_data['author']
+    note.email = note_form.cleaned_data['email']
+    note.text = note_form.cleaned_data['text']
+    note.save()
+    return redirect('main')

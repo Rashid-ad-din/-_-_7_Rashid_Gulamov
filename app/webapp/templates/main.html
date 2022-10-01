@@ -17,9 +17,15 @@
                                 {{ note.author }} ({{ note.email }})
                             </h5>
                         </div>
-                        <div>
-                            <i class="ml-4 bi bi-pencil-square"></i>
-                            <i class="bi bi-file-earmark-minus"></i>
+                        <div class="d-flex">
+                            <div>
+                                <a href="{% url 'edit' note.pk %}"><i
+                                        class="ml-4 mr-3 bi bi-pencil-square fs-4"></i></a>
+                            </div>
+                            <div>
+                                <a href=""><i class="bi bi-file-earmark-minus fs-4"></i></a>
+                            </div>
+
                         </div>
                     </div>
                     <p class="card-text">{{ note.text }}</p>

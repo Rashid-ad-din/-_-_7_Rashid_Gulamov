@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Изменение записи {% endblock %}
+
+{% block content %}
+
+    <h5>Изменение записи</h5>
+    <form action="{% url 'edit' note.pk %}" method="POST" class="ml-4">
+        {% include 'partial/partial_add_edit.html' with button_text1='Сохранить' %}
+    </form>
+{% endblock %}
