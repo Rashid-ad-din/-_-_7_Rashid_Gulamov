@@ -7,7 +7,7 @@
     <form action="{% url 'search' %}" class="mb-3 mr-5 text-left">
         {% csrf_token %}
         {{ search_form.search }}
-        <input type="submit" value="Найти">
+        <input type="submit" value="Найти" class="btn-custom btn mb-1">
     </form>
     {% if notes %}
         {% for note in notes %}
